@@ -1,4 +1,5 @@
 class MainMenu:
+    """The constants representing the page selections in the top menu."""
     MY_HOME = "myHomeMain"
     LEADS = "leadsMain"
     CONTACTS = "contactsMain"

@@ -7,6 +7,7 @@ from utility.constants import MainMenu
 
 @pytest.fixture
 def browser():
+    """Configure the driver for setup and tear down."""
     url = 'http://leaftaps.com/crmsfa/control/logout'
     driver = Chrome()
     driver.get(url)
@@ -37,7 +38,7 @@ def test_main_menus(browser):
     menu.open(MainMenu.QUOTES)
     menu.open(MainMenu.REPORTS)
     menu.open(MainMenu.TEAMS)
-
+    
 
 def login(browser):
     loginpage = LoginPage(browser)
