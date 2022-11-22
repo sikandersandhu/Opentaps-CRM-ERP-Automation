@@ -1,0 +1,16 @@
+class MainMenu:
+    MY_HOME = "myHomeMain"
+    LEADS = "leadsMain"
+    CONTACTS = "contactsMain"
+    ACCOUNTS = "accountsMain"
+    CASES = "casesMain"
+    ACTIVITIES = "activitiesMain"
+    OPPORTUNITIES = "opportunitiesMain"
+    QUOTES = "quotesMain"
+    ORDERS = "ordersMain"
+    FORECASTS = "forecastsMain"
+    MARKETING = "marketingMain"
+    PARTNERS = "partnersMain"
+    TEAMS = "teamsMain"
+    REPORTS = "viewDashboard"
+
