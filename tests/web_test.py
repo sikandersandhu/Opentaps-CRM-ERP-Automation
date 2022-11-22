@@ -1,25 +1,51 @@
 import pytest
 from selenium.webdriver import Chrome
 from ui.login_page import LoginPage
+from ui.menu import Menu
+from utility.constants import MainMenu
 
 
 @pytest.fixture
 def browser():
+    url = 'http://leaftaps.com/crmsfa/control/logout'
     driver = Chrome()
-    driver.implicitly_wait(10)
+    driver.get(url)
+    driver.maximize_window()
     yield driver
     driver.quit()
 
 
 def test_login(browser):
-    # setup
+    login(browser)
+
+
+def test_main_menus(browser):
+    login(browser)
+
+    menu = Menu(browser)
+    menu.open(MainMenu.LEADS)
+    menu.open(MainMenu.ACCOUNTS)
+    menu.open(MainMenu.ACTIVITIES)
+    menu.open(MainMenu.CASES)
+    menu.open(MainMenu.CONTACTS)
+    menu.open(MainMenu.FORECASTS)
+    menu.open(MainMenu.MARKETING)
+    menu.open(MainMenu.MY_HOME)
+    menu.open(MainMenu.OPPORTUNITIES)
+    menu.open(MainMenu.ORDERS)
+    menu.open(MainMenu.PARTNERS)
+    menu.open(MainMenu.QUOTES)
+    menu.open(MainMenu.REPORTS)
+    menu.open(MainMenu.TEAMS)
+
+
+def login(browser):
     loginpage = LoginPage(browser)
-    logingpage_title = 'opentaps CRM'
-    homepage_title = 'My Home | opentaps CRM'
+    title_logingpg = 'opentaps CRM'
+    title_homepg = 'My Home | opentaps CRM'
 
     # assert
-    loginpage.load()
-    loginpage.assert_title(logingpage_title)
+    loginpage.assert_title(title_logingpg)
 
     # act
     loginpage.enter_username('demosalesmanager')
@@ -27,5 +53,4 @@ def test_login(browser):
     loginpage.login()
 
     # assert
-    loginpage.assert_title(homepage_title)
-
+    loginpage.assert_title(title_homepg)
